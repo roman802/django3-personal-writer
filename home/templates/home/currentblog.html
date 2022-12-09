@@ -1,0 +1,71 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="container bt-50px" style="padding-top: 50px;">   
+    <div class="row">        
+  <div class="col-3">
+    
+  </div>
+ 
+  <div class="col-9">
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+        
+            
+        {% for mypost in myposts %}
+            <div class="row" style="padding: 10px;">
+              <div class="col-8 border border-1 bg-white rounded-3" style="padding-top: 5px; padding-bottom: 5px; padding-left: 8px; padding-right: 8px;">
+                <img src="{% static 'home/avatar.png' %}" class="rounded float-start" style="width: 35px; height: 35px;" alt="">
+          
+                <h2 class="fs-5" style="padding-top: 5px; padding-left: 50px;">{{ mypost.user }}</h2>
+                <hr>
+                <!-- //////////////////////
+                <div class="text-center">
+                  <img src="img/test3.jpeg" class="rounded" style="height: 350px;" alt="...">
+                </div>
+                ////////////////////// -->
+                <div class="">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ mypost.title }}</h5>
+                    <p class="card-text">{{ mypost.memo }}</p>
+                    <p class="card-text"><small class="text-muted">{{ mypost.created }}</small></p>
+                    <nav class="nav nav-pills flex-column">
+        
+                        <!-- <a class="nav-link" href="{% url 'viewpost' mypost.id %}">Редактировать</a>
+                        <form method="POST" action="{% url 'deletepost' mypost.id %}">
+                            {% csrf_token %}
+                        <button type="submit" name="button">Deletet</button>
+                        </form> -->
+                        
+                      </nav>
+                  </div>
+                  
+          
+          
+                </div>
+                
+              </div>
+            </div>
+            <form method="POST">
+              {% csrf_token %}
+              <a type="submit" class="btn btn-primary" href="{% url 'viewpost' mypost.id %}">Редактировать</a>
+              
+              <button type="button" class="btn btn-danger" onclick="$('#delete').click()">Delete</button>
+            </form>
+            <form style='display: none;' method="POST" action="{% url 'deletepost' mypost.id %}">
+              {% csrf_token %}
+              <button id="delete" type="submit">Delete</button>
+            </form>
+        {% endfor %}
+            
+          
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

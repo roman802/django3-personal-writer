@@ -1,0 +1,124 @@
+#toTop {
+    width:100px;
+    border:1px solid rgb(55, 56, 66);
+    border-radius: 25px;
+    background:rgb(55, 56, 66);
+    text-align:center;
+    padding:5px;
+    position:fixed;
+    bottom:10px; /* отступ кнопки от нижнего края страницы*/
+    right:10px;
+    cursor:pointer;
+    display:none;
+    color:rgb(165, 165, 165);
+    font-family:verdana;
+    font-size:11px;
+    }
+
+
+
+    
+    .footer-wrap h3 {
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
+    
+    .footer-wrap p {
+        font-size: 14px;
+        line-height: 24px;
+        color: #141414;
+        margin-top: 15px;
+    }
+    
+    .footer-wrap p a {
+        color: #141414;
+        text-decoration: underline;
+        font-style: italic;
+    }
+    
+    .footer-wrap p a:hover {
+        text-decoration: none;
+        color: #ff7800;
+    }
+    
+    .footer-links li a {
+        font-size: 14px;
+        line-height: 26px;
+        color: #b3b3b3;
+        text-decoration: none;
+    }
+    
+    .footer-links li:before {
+        content: "\f105";
+        font-family: 'FontAwesome';
+        padding-right: 10px;
+        color: #b3b3b3;
+    }
+    
+    .footer-category li a {
+        font-size: 14px;
+        line-height: 26px;
+        color: #b3b3b3;
+        text-decoration: none;
+    }
+    
+    .footer-category li:before {
+        content: "\f105";
+        font-family: 'FontAwesome';
+        padding-right: 10px;
+        color: #b3b3b3;
+    }
+    
+    .address {
+        
+        color: #b3b3b3;
+        font-size: 14px;
+        position: relative;
+        padding-left: 30px;
+        line-height: 30px;
+    }
+    
+    .address:before {
+        content: "\f277";
+        font-family: 'FontAwesome';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .info a {
+    
+        color: #b3b3b3;
+        font-size: 14px;
+        line-height: 30px;
+        font-weight: normal;
+    }
+    
+    .fa-phone:before {
+        content: "\f095";
+    }
+    
+    .info a {
+    
+        color: #b3b3b3;
+        font-size: 14px;
+        line-height: 30px;
+        font-weight: normal;
+    }
+    
+    .fa-fax:before {
+        content: "\f1ac";
+    }
+    
+    .copyright {
+        border-top: 1px solid #5f5f5f;
+        font-size: 14px;
+        color: #b3b3b3;
+        margin-top: 25px;
+        padding-top: 10px;
+        text-align: center;
+        padding-bottom: 10px;
+    }

@@ -1,0 +1,88 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="container bt-50px border-end border-start" style="padding-top: 50px; max-width: 625px;">   
+    <div class="row">        
+ 
+ 
+  <div class="col">
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+        
+        <div class="" style="max-width: 600px;">
+            <div class="row">
+              <div class="col">
+                <img src="{% static 'home/pisatel.jpg' %}" class="img-fluid rounded-start" style="max-width: 600; height: auto;" alt="...">
+              </div>
+              
+            </div>
+            <p>Родился Николай Петрович в... <a href="{% url 'home' %}">подробнее</a></p>
+            <hr>
+          </div>
+          
+          
+            
+              {% if error %}
+                <div class="alert alert-danger" role="alert">
+                  {{ error }}
+                </div>
+              {% endif %}
+            <form method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                  <label for="memo">Описание</label>
+                  <textarea name="memo" class="form-control" id="memo" ></textarea>
+              </div>
+              <br>
+              {% if user.is_authenticated %}
+              <button type="submit" class="btn btn-primary">Save</button>
+              
+              <a href="{% url 'currentblog' %}" class="btn btn-outline-primary">Мои записи</a>  
+              
+              {% else %}
+              <button type="submit" class="btn btn-primary" disabled>Save</button>
+              <a href="{% url 'currentblog' %}" class="btn btn-outline-primary" disabled>Мои записи</a>  
+              {% endif %}
+            </form>
+            
+          <hr>
+          
+            
+        {% for comment in comments %}
+            <div class="row" style="padding: 10px;">
+              <div class="col border border-1 bg-white rounded-3" style="padding-top: 5px; padding-bottom: 5px; padding-left: 8px; padding-right: 8px;">
+                <img src="{% static 'home/avatar.png' %}" class="rounded float-start" style="width: 35px; height: 35px;" alt="">
+          
+                <h2 class="fs-5" style="padding-top: 5px; padding-left: 50px;">{{ comment.user }}</h2>
+                <hr>
+                <!-- //////////////////////
+                <div class="text-center">
+                  <img src="img/test3.jpeg" class="rounded" style="height: 350px;" alt="...">
+                </div>
+                ////////////////////// -->
+                <div class="">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ comment.title }}</h5>
+                    <p class="card-text">{{ comment.memo }}</p>
+                    <p class="card-text"><small class="text-muted">{{ comment.created|date:'M j Y'}}</small></p>
+                  </div>
+          
+          
+          
+                </div>
+          
+              </div>
+            </div>
+            {% endfor %}
+            
+          
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

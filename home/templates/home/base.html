@@ -1,0 +1,145 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body class="bg-light">
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-white">
+            <div class="container" style="max-width: 1100px;">
+              <a class="navbar-brand" href="{% url 'home' %}" id="scrollspyHeading1">Shilov</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav justify-content-center">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Главная</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'discussion' %}">Обсуждение</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Контакты</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">(994) у347 43у5 095</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Kornprojectone@mail.ru</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="nav justify-content-end">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">{{ user.username }}</a>
+                      </li>
+                      <li class="nav-item">
+                        <form class="" action="{% url 'logoutuser' %}" method="post">
+                          {% csrf_token %}
+                        <button type="submit" name="button" class="btn btn-outline-primary">Выйти</button>
+                        </form>
+                      </li>
+
+                      {% else %}
+
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'loginuser' %}">Войти</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'signupuser' %}">Зарегистрироваться</a>
+                      </li>
+                      {% endif %}
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <div id = "toTop" class="btn2" > ^ Наверх </div>
+
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+     
+    <script type="text/javascript">
+     
+    $(function() {
+     
+    $(window).scroll(function() {
+     
+    if($(this).scrollTop() != 0) {
+     
+    $('#toTop').fadeIn();
+     
+    } else {
+     
+    $('#toTop').fadeOut();
+     
+    }
+     
+    });
+     
+    $('#toTop').click(function() {
+     
+    $('body,html').animate({scrollTop:0},800);
+     
+    });
+     
+    });
+    
+    </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        {% block content %}{% endblock %}
+        <hr>
+        <div class="footer-wrap">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-sm-6">
+                <h3 style="color: rgb(0, 0, 0);">О сайте</h3>
+                <div class="footer-logo"><img src="http://hassandesigns.top/html/classified/images/footer-logo.png" alt=""></div>
+                <div style="color: rgb(0, 0, 0);">
+                <p style="color: rgb(0, 0, 0);">Сайт создан для школьного проекта.</p>
+                <p style="color: rgb(0, 0, 0);">Весь текст взят на сайте http://www.kultura.kurganobl.ru/3639.html</p>
+              </div>
+              </div>
+              <div class="col-md-2 col-sm-6">
+                <h3 style="color: rgb(0, 0, 0);">Ссылки</h3>
+                <ul class="">
+                  <li><a href="{% url 'home' %}">Главная</a></li>
+                  <li><a href="{% url 'discussion' %}">Обсуждение</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Контакты</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">(994) у347 43у5 095</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Kornprojectone@mail.ru</a></li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+              </div>
+              
+              <div class="col-md-3 col-sm-6">
+                <h3 style="color: rgb(0, 0, 0);">Связь</h3>
+                <div class="address">ул. Диванская, 28, Челябинск, Челябинская обл. </div>
+                <div class="info"><i class="fa fa-phone" aria-hidden="true"></i> <a href="#.">(994) у347 43у5 095</a></div>
+                <div class="info"><i class="fa fa-fax" aria-hidden="true"></i> <a href="#.">(007) 672 762 45 62</a></div>
+              </div>
+            </div>
+            <div class="copyright">Schoolproject © 2022 Классифицировать - Все права защищены.</div>
+          </div>
+        </div>
+  </body>
+</html>
+    
